@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -39,9 +40,9 @@ public class PrismicController {
             bookmarkService.createRepository(request.getRequestURI());
             return repositoryService.getAllRepositories(user);
         }catch(Exception e){
-            System.out.println("error repositories request");
+            System.out.println(e);
         }
-        return null;
+        return Collections.emptyList();
     }
 
     /**

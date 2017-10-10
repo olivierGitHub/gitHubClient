@@ -22,7 +22,7 @@ public class UrlHelper {
         con.setRequestMethod("GET");
         con.setRequestProperty("User-Agent", USER_AGENT);
         con.setRequestProperty("Accept", ACCEPT);
-        con.setRequestProperty("Authorization", AUTHORIZATION);
+        //con.setRequestProperty("Authorization", AUTHORIZATION);
 
         return con;
     }

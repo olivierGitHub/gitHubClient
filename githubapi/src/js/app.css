@@ -1,0 +1,93 @@
+.main {
+  text-align: center;
+}
+
+.logo_gl {
+  height: 60px;
+}
+
+.content {
+  font-size: large;
+}
+
+
+/*loader*/
+
+.loader {
+  margin-left: 50%;
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+.homepage{
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/7c/Vicu%C3%B1a_-_Chimborazo%2C_Ecuador.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    position: relative;
+}
+
+.homepageTitle{
+  padding-top: 80px;
+    text-align: center;
+    color: white;
+    letter-spacing: 2px;
+}
+
+homeTopTitle:hover {
+    text-decoration: none;
+}
+
+.homepageInput{
+  margin-bottom: 80px;
+}
+
+.homepageSubTitle{
+  text-align: center;
+  color: white;
+  padding-top: 60px;
+}
+
+.homepageTabs{
+  padding-top: 30px;
+}
+
+.commonOverlay{
+    top:0;
+    bottom:0;
+    left:0;
+    width:100%;
+    position:absolute;
+
+    background-color: black;
+    opacity: 0.6;
+}
+
+.homeTopTitle{
+    /*position:relative;*/
+    cursor: pointer; cursor: hand;
+    color: white;
+    z-index:1;
+}
+
+.homepageOverlay{
+  position:relative;
+  z-index:1;
+}

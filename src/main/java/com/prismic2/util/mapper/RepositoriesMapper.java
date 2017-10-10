@@ -7,12 +7,15 @@ import org.json.JSONObject;
 public class RepositoriesMapper {
 
 
+    private static String baseUrl = "http://localhost:3000/commits/";
+
+
     static public RepositoryDto convert (JSONObject repositoryJson){
         RepositoryDto repositoryDto = new RepositoryDto();
         repositoryDto.setId((Integer) repositoryJson.get("id"));
         repositoryDto.setName((String) repositoryJson.get("name"));
-        repositoryDto.setCommitsUrl(getCommitsUrl(repositoryJson));
         repositoryDto.setOwner(getOwner(repositoryJson));
+        repositoryDto.setCommitsUrl(baseUrl + repositoryDto.getOwner() + "/" +repositoryDto.getName());
 
         return repositoryDto;
     }
