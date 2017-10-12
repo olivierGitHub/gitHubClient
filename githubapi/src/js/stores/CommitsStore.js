@@ -14,11 +14,7 @@ class CommitsStore extends Reflux.Store
         this.listenables = Actions;
     }
 
-    onGetAll(owner, repo)
-    {
-
-    console.log(owner);
-    console.log(repo);
+    onGetAll(owner, repo){
         if (owner && repo){
           var ctx = this;
           $.ajax({
@@ -28,7 +24,6 @@ class CommitsStore extends Reflux.Store
               crossDomain: true,
               dataType: "json",
               success: function(data){
-                console.log(data);
                 if(data[0]){
                   ctx.setState({commits:data});
                   ctx.setState({error:false});

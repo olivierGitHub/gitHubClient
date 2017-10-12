@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 
 
-class Home extends Component {
+class NotFound extends Component {
 
   constructor(props) {
       super(props);
 
-      this.state = {
-         homeText: 'sera initialisé par le componentWillMount'
-      }
+
    };
 
 
@@ -16,10 +14,10 @@ class Home extends Component {
     return (
       <div>
         <br />
-        Hello homepagenot found
+        not found
         </div>
     );
   }
 }
 
-export default Home;
+export default NotFound;

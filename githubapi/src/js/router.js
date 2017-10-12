@@ -5,7 +5,6 @@ import Commit from './components/commit.js';
 import Repository from './components/repository.js';
 import NotFound from './components/notFound.js';
 import Navigation from './components/navigation.js';
-import Home from './components/home.js';
 
 class App extends Component {
   render() {
@@ -15,7 +14,7 @@ class App extends Component {
           <Navigation />
           <div className="content">
             <Switch>
-              <Route path="/" exact component={Home} />
+              <Route path="/" exact component={Repository} />
               <Route path="/repositories" exact component={Repository} />
               <Route path="/repositories/:user" exact component={Repository} />
               <Route path="/repositories/:user/:repo" exact component={Repository} />

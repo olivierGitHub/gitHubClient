@@ -5,12 +5,18 @@ import logo from '../../static/github.png';
 class Navigation extends Component {
   render() {
     return (
-        <ul className="menu expanded">
-          <li><Link to="/"><img src={logo} className="logo_gl" alt="logo" /></Link></li>
-          <li><Link to="/repositories/">Repository</Link></li>
-          <li><Link to="/commits">Commits</Link></li>
-          <li><Link to="/help">Help</Link></li>
-        </ul>
+      <nav className="navbar navbar-default">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <Link className="navbar-brand" to="/repositories"><img src={logo} className="logo_github" alt="logo" /></Link>
+          </div>
+          <ul className="nav navbar-nav">
+            <li className="active"><Link to="/repositories/">Repository</Link></li>
+            <li><Link to="/commits">Commits</Link></li>
+            <li><Link to="/help">Help</Link></li>
+          </ul>
+        </div>
+      </nav>
     );
   }
 }

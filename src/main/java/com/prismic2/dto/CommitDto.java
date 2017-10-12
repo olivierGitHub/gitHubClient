@@ -7,7 +7,7 @@ public class CommitDto implements Serializable {
 
     private String sha;
     private String committerName;
-    private Integer committerId;
+    private String date;
     private String message;
 
 
@@ -27,12 +27,12 @@ public class CommitDto implements Serializable {
         this.committerName = committerName;
     }
 
-    public Integer getCommitterId() {
-        return committerId;
+    public String getDate() {
+        return date;
     }
 
-    public void setCommitterId(Integer committerId) {
-        this.committerId = committerId;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getMessage() {

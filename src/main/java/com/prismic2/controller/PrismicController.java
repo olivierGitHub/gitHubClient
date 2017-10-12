@@ -81,6 +81,7 @@ public class PrismicController {
             return commitService.getAllCommits(user, repository);
         }catch(Exception e){
             System.out.println("error commits request");
+            System.out.println(e);
         }
 
         return null;

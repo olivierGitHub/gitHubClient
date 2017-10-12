@@ -29,7 +29,7 @@ public class RepositoryService {
      */
     public List<RepositoryDto> getAllRepositories(String user) throws Exception {
         String url = "https://api.github.com/users/" + user +"/repos";
-        StringBuffer response = requestGitHubApi(url);
+        String response = requestGitHubApi(url);
         List<JSONObject> responseList = jsonHelper.toJsonObjectList(response);
 
         return responseList.stream()
@@ -39,9 +39,9 @@ public class RepositoryService {
 
     public RepositoryDto getRepository(String owner, String repo) throws Exception{
         String url = "https://api.github.com/repos/" +owner+ "/" + repo;
-        StringBuffer response = requestGitHubApi(url);
+        String response = requestGitHubApi(url);
 
-        return RepositoriesMapper.convert(new JSONObject(response.toString()));
+        return RepositoriesMapper.convert(new JSONObject(response));
     }
 
 
@@ -51,7 +51,7 @@ public class RepositoryService {
      * @return
      * @throws Exception
      */
-    private StringBuffer requestGitHubApi(String url) throws Exception {
+    private String requestGitHubApi(String url) throws Exception {
         HttpURLConnection con = urlHelper.getConnection(url);
 
         return urlHelper.getResponse(con);

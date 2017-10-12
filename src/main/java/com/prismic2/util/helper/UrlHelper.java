@@ -27,13 +27,13 @@ public class UrlHelper {
         return con;
     }
 
-    public StringBuffer getResponse (HttpURLConnection con) throws Exception{
+    public String getResponse (HttpURLConnection con) throws Exception{
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
-        StringBuffer response = new StringBuffer();
+        String response="";
 
         while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+            response += inputLine;
         }
         in.close();
 
