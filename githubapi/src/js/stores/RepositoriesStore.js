@@ -1,6 +1,6 @@
 import Reflux from 'reflux';
 import $ from 'jquery';
-import Actions from '../actions/RepositoriesActions.js';
+import RepositoriesActions from '../actions/RepositoriesActions.js';
 
 class RepositoriesStore extends Reflux.Store
 {
@@ -10,7 +10,7 @@ class RepositoriesStore extends Reflux.Store
         this.state = {
             repos:null
         };
-        this.listenables = Actions;
+        this.listenables = RepositoriesActions;
     }
 
     onGetAllRepos(user)

@@ -1,6 +1,6 @@
 import CommitHelper from '../../helpers/commitHelper.js';
 import React, { Component } from 'react';
-import Highcharts  from 'highcharts';
+import Highcharts  from './configuration/configurationHighChart.js';
 
 
 class UserImpact extends Component {
@@ -14,7 +14,9 @@ class UserImpact extends Component {
     var yCategories = [];
     for(var key in commitsByName) yCategories.push(commitsByName[key].length);
 
-    var chart = new Highcharts.Chart({
+
+
+    new Highcharts.Chart({
         chart: {
             renderTo: 'highchartsContainer',
             type: 'areaspline'

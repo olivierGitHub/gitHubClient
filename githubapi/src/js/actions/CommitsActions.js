@@ -1,8 +1,8 @@
 import Reflux from 'reflux';
 
-var Actions = Reflux.createActions([
+var CommitsActions = Reflux.createActions([
     "getAll",
     "getSpecificCommits"
 ]);
 
-export default Actions;
+export default CommitsActions;

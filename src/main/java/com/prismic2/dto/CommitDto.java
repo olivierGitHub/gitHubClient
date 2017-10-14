@@ -8,7 +8,6 @@ public class CommitDto implements Serializable {
     private String sha;
     private String committerName;
     private String date;
-    private String message;
 
 
     public String getSha() {
@@ -35,11 +34,4 @@ public class CommitDto implements Serializable {
         this.date = date;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

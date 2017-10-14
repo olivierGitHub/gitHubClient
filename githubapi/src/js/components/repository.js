@@ -26,6 +26,7 @@ class Repository extends Reflux.Component {
 
    componentDidMount(){
       this.requestServer(this.props.match.params.user);
+      //RepositoriesActions.getAllRepos(this.props.match.params.user);
    }
 
 

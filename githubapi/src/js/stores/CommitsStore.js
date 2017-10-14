@@ -1,6 +1,6 @@
 import Reflux from 'reflux';
 import $ from 'jquery';
-import Actions from '../actions/CommitsActions.js';
+import CommitsActions from '../actions/CommitsActions.js';
 
 class CommitsStore extends Reflux.Store
 {
@@ -11,7 +11,7 @@ class CommitsStore extends Reflux.Store
             commits:null,
             error:false
         };
-        this.listenables = Actions;
+        this.listenables = CommitsActions;
     }
 
     onGetAll(owner, repo){

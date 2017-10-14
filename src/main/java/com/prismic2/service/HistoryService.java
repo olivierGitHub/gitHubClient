@@ -30,6 +30,7 @@ public class HistoryService {
         repository.setUrl(url);
 
         repositoryDao.save(repository);
+        System.out.println("repo request saved");
     }
 
     /**
@@ -41,5 +42,6 @@ public class HistoryService {
         commit.setUrl(url);
 
         commitDao.save(commit);
+        System.out.println("repo request saved");
     }
 }

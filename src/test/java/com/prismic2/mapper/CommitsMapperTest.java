@@ -34,6 +34,5 @@ public class CommitsMapperTest {
         Assert.assertNotNull(commitDto);
         Assert.assertEquals(commitDto.getSha(), "1e83bea2d19d5e937f6e9549be03c341aae627c1");
         Assert.assertEquals(commitDto.getCommitterName(), "olivier");
-        Assert.assertEquals(commitDto.getMessage(), "readme modified");
     }
 }

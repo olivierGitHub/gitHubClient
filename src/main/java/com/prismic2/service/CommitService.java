@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
 @Service
 public class CommitService {
 
+    private static final int MAX = 100;
+
     @Autowired
     private JsonHelper jsonHelper;
 
@@ -36,6 +38,9 @@ public class CommitService {
         String url = "https://api.github.com/repos/"+ user +"/"+ repository+ "/commits";
         String response = requestGitHubApi(url);
         List<JSONObject> responseList = jsonHelper.toJsonObjectList(response);
+        if(responseList.size() > MAX){
+            responseList = responseList.subList(0, MAX);
+        }
 
         return responseList.stream()
                 .map(commitsMapper::convert)

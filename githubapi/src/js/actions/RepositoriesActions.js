@@ -1,8 +1,8 @@
 import Reflux from 'reflux';
 
-var Actions = Reflux.createActions([
+var RepositoriesActions = Reflux.createActions([
     "getAllRepos",
     "getSpecificRepository"
 ]);
 
-export default Actions;
+export default RepositoriesActions;
