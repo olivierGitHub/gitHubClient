@@ -3,14 +3,16 @@ package com.prismic2.util.mapper;
 
 import com.prismic2.dto.RepositoryDto;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RepositoriesMapper {
 
 
     private static String baseUrl = "http://localhost:3000/commits/";
 
 
-    static public RepositoryDto convert (JSONObject repositoryJson){
+    public RepositoryDto convert (JSONObject repositoryJson){
         RepositoryDto repositoryDto = new RepositoryDto();
         repositoryDto.setId((Integer) repositoryJson.get("id"));
         repositoryDto.setName((String) repositoryJson.get("name"));
@@ -20,12 +22,7 @@ public class RepositoriesMapper {
         return repositoryDto;
     }
 
-    static private String getOwner(JSONObject repositoryJson){
+    private String getOwner(JSONObject repositoryJson){
         return (String) new JSONObject(repositoryJson.get("owner").toString()).get("login");
-    }
-
-    static private String getCommitsUrl(JSONObject repositoryJson){
-        String str = (String) repositoryJson.get("commits_url");
-        return str.substring(0, str.length() -6);
     }
 }

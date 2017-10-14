@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 
 @Service
 @Transactional
-public class BookmarkService {
+public class HistoryService {
 
 
     @Autowired

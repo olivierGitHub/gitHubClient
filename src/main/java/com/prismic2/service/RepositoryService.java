@@ -21,6 +21,9 @@ public class RepositoryService {
     @Autowired
     private UrlHelper urlHelper;
 
+    @Autowired
+    private RepositoriesMapper repositoriesMapper;
+
     /**
      *
      * @param user
@@ -33,7 +36,7 @@ public class RepositoryService {
         List<JSONObject> responseList = jsonHelper.toJsonObjectList(response);
 
         return responseList.stream()
-                .map(RepositoriesMapper::convert)
+                .map(repositoriesMapper::convert)
                 .collect(Collectors.toList());
     }
 
@@ -41,7 +44,7 @@ public class RepositoryService {
         String url = "https://api.github.com/repos/" +owner+ "/" + repo;
         String response = requestGitHubApi(url);
 
-        return RepositoriesMapper.convert(new JSONObject(response));
+        return repositoriesMapper.convert(new JSONObject(response));
     }
 
 

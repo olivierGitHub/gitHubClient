@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.HttpURLConnection;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +21,9 @@ public class CommitService {
 
     @Autowired
     private UrlHelper urlHelper;
+
+    @Autowired
+    private CommitsMapper commitsMapper;
 
     /**
      *
@@ -36,7 +38,7 @@ public class CommitService {
         List<JSONObject> responseList = jsonHelper.toJsonObjectList(response);
 
         return responseList.stream()
-                .map(CommitsMapper::convert)
+                .map(commitsMapper::convert)
                 .collect(Collectors.toList());
     }
 
@@ -44,7 +46,7 @@ public class CommitService {
         String url = "https://api.github.com/repos/" +owner+"/"+repo+"/commits/"+ sha;
         String response = requestGitHubApi(url);
 
-        return CommitsMapper.convert(new JSONObject(response));
+        return commitsMapper.convert(new JSONObject(response));
     }
 
 

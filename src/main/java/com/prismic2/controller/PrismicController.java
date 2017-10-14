@@ -2,7 +2,7 @@ package com.prismic2.controller;
 
 import com.prismic2.dto.CommitDto;
 import com.prismic2.dto.RepositoryDto;
-import com.prismic2.service.BookmarkService;
+import com.prismic2.service.HistoryService;
 import com.prismic2.service.CommitService;
 import com.prismic2.service.RepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class PrismicController {
     private CommitService commitService;
 
     @Autowired
-    private BookmarkService bookmarkService;
+    private HistoryService historyService;
 
     /**
      *
@@ -37,7 +37,7 @@ public class PrismicController {
     @GetMapping(value = "/repositories/{user}")
     public List<RepositoryDto> getAllRepositories(@PathVariable(value="user") String user, HttpServletRequest request) {
         try{
-            bookmarkService.createRepository(request.getRequestURI());
+            historyService.createRepository(request.getRequestURI());
             return repositoryService.getAllRepositories(user);
         }catch(Exception e){
             System.out.println(e);
@@ -57,7 +57,7 @@ public class PrismicController {
                                               @PathVariable(value="repo") String repository,
                                               HttpServletRequest request) {
         try{
-            bookmarkService.createRepository(request.getRequestURI());
+            historyService.createRepository(request.getRequestURI());
             return repositoryService.getRepository(user, repository);
         }catch(Exception e){
             System.out.println("error repositories request");
@@ -77,7 +77,7 @@ public class PrismicController {
                                          @PathVariable(value="repo") String repository,
                                          HttpServletRequest request) {
         try{
-            bookmarkService.createCommit(request.getRequestURI());
+            historyService.createCommit(request.getRequestURI());
             return commitService.getAllCommits(user, repository);
         }catch(Exception e){
             System.out.println("error commits request");
@@ -101,7 +101,7 @@ public class PrismicController {
                                        @PathVariable(value="sha") String sha,
                                        HttpServletRequest request) {
         try{
-            bookmarkService.createCommit(request.getRequestURI());
+            historyService.createCommit(request.getRequestURI());
             return commitService.getCommit(user, repository, sha);
         }catch(Exception e){
             System.out.println("error commit request");
