@@ -59,6 +59,24 @@ public class CommitServiceTest {
     }
 
     @Test
+    public void getAllCommits_should_return_an_empty_list() throws Exception {
+        // GIVEN
+        HttpURLConnection httpURLConnection = null;
+
+        // WHEN
+        Mockito.when(urlHelper.getConnection(Mockito.anyString())).thenReturn(httpURLConnection);
+        Mockito.when(urlHelper.getResponse(Mockito.any())).thenReturn(JSON_RESPONSE);
+        Mockito.when(jsonHelper.toJsonObjectList(JSON_RESPONSE)).thenCallRealMethod();
+
+        // THEN
+        List<CommitDto> allCommits = commitService.getAllCommits("olivier", " ");
+
+        // ASSERT
+        Assert.assertNotNull(allCommits);
+        Assert.assertEquals(allCommits.size(), 0);
+    }
+
+    @Test
     public void getCommit_should_return_a_CommitDto() throws Exception {
         // GIVEN
         HttpURLConnection httpURLConnection = null;
@@ -73,5 +91,21 @@ public class CommitServiceTest {
         // ASSERT
         Assert.assertNotNull(commitDto);
         Assert.assertEquals(commitDto.getSha(), "1e83bea2d19d5e937f6e9549be03c341aae627c1");
+    }
+
+    @Test
+    public void getCommit_should_return_null() throws Exception {
+        // GIVEN
+        HttpURLConnection httpURLConnection = null;
+
+        // WHEN
+        Mockito.when(urlHelper.getConnection(Mockito.anyString())).thenReturn(httpURLConnection);
+        Mockito.when(urlHelper.getResponse(Mockito.any())).thenReturn(COMMIT_JSON_STRING);
+
+        // THEN
+        CommitDto commitDto = commitService.getCommit("olivier", "react", " ");
+
+        // ASSERT
+        Assert.assertNull(commitDto);
     }
 }

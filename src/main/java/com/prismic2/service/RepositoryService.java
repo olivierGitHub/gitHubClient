@@ -10,13 +10,12 @@ import org.springframework.stereotype.Service;
 
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class RepositoryService {
-
-    private static final int MAX = 100;
 
     @Autowired
     private JsonHelper jsonHelper;
@@ -34,12 +33,12 @@ public class RepositoryService {
      * @throws Exception
      */
     public List<RepositoryDto> getAllRepositories(String user) throws Exception {
+        if(checkString(user)){
+            return Collections.emptyList();
+        }
         String url = "https://api.github.com/users/" + user +"/repos";
         String response = requestGitHubApi(url);
         List<JSONObject> responseList = jsonHelper.toJsonObjectList(response);
-        if(responseList.size() > MAX){
-            responseList = responseList.subList(0, MAX);
-        }
 
         return responseList.stream()
                 .map(repositoriesMapper::convert)
@@ -47,6 +46,9 @@ public class RepositoryService {
     }
 
     public RepositoryDto getRepository(String owner, String repo) throws Exception{
+        if(checkString(owner) || checkString(repo)){
+            return null;
+        }
         String url = "https://api.github.com/repos/" +owner+ "/" + repo;
         String response = requestGitHubApi(url);
 
@@ -66,5 +68,8 @@ public class RepositoryService {
         return urlHelper.getResponse(con);
     }
 
+    private Boolean checkString(String str){
+        return str == null || "".equals(str.trim());
+    }
 
 }

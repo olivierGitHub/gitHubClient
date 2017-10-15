@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.HttpURLConnection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,6 +36,9 @@ public class CommitService {
      * @throws Exception
      */
     public List<CommitDto> getAllCommits(String user, String repository) throws Exception {
+        if(checkString(user) || checkString(repository)){
+            return Collections.emptyList();
+        }
         String url = "https://api.github.com/repos/"+ user +"/"+ repository+ "/commits";
         String response = requestGitHubApi(url);
         List<JSONObject> responseList = jsonHelper.toJsonObjectList(response);
@@ -48,14 +52,14 @@ public class CommitService {
     }
 
     public CommitDto getCommit(String owner, String repo, String sha) throws Exception{
+        if(checkString(owner) || checkString(repo) || checkString(sha)){
+            return null;
+        }
         String url = "https://api.github.com/repos/" +owner+"/"+repo+"/commits/"+ sha;
         String response = requestGitHubApi(url);
 
         return commitsMapper.convert(new JSONObject(response));
     }
-
-
-
 
     /**
      *
@@ -69,5 +73,7 @@ public class CommitService {
         return urlHelper.getResponse(con);
     }
 
-
+    private Boolean checkString(String str){
+        return str == null || "".equals(str.trim());
+    }
 }

@@ -59,6 +59,24 @@ public class RepositoriesServiceTest {
     }
 
     @Test
+    public void getAllRepositories_should_return_empty_list() throws Exception {
+        // GIVEN
+        HttpURLConnection httpURLConnection = null;
+
+        // WHEN
+        Mockito.when(urlHelper.getConnection(Mockito.anyString())).thenReturn(httpURLConnection);
+        Mockito.when(urlHelper.getResponse(Mockito.any())).thenReturn(JSON_RESPONSE);
+        Mockito.when(jsonHelper.toJsonObjectList(JSON_RESPONSE)).thenCallRealMethod();
+
+        // THEN
+        List<RepositoryDto> allRepositories = repositoryService.getAllRepositories(" ");
+
+        // ASSERT
+        Assert.assertNotNull(allRepositories);
+        Assert.assertEquals(allRepositories.size(), 0);
+    }
+
+    @Test
     public void getRepository_should_return_a_RepositoryDto() throws Exception {
         // GIVEN
         HttpURLConnection httpURLConnection = null;
@@ -73,6 +91,22 @@ public class RepositoriesServiceTest {
         // ASSERT
         Assert.assertNotNull(repositoryDto);
         Assert.assertEquals(repositoryDto.getName(), "AngularMaterialProject");
+    }
+
+    @Test
+    public void getRepository_should_return_null() throws Exception {
+        // GIVEN
+        HttpURLConnection httpURLConnection = null;
+
+        // WHEN
+        Mockito.when(urlHelper.getConnection(Mockito.anyString())).thenReturn(httpURLConnection);
+        Mockito.when(urlHelper.getResponse(Mockito.any())).thenReturn(REPOSITORY_JSON_STRING);
+
+        // THEN
+        RepositoryDto repositoryDto = repositoryService.getRepository(" ", "react");
+
+        // ASSERT
+        Assert.assertNull(repositoryDto);
     }
 
 }

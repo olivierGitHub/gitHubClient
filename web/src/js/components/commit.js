@@ -25,7 +25,7 @@ class Commit extends Reflux.Component {
     return (
       <div>
         <div className="row homepage">
-            <div className="commonOverlay"></div>
+            <div className="commitsOverlay"></div>
             <div className="homepageOverlay">
               <h2 className="homepageTitle"> Dashboard </h2>
             </div>

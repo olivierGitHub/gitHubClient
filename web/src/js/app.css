@@ -88,6 +88,17 @@ homeTopTitle:hover {
     opacity: 0.6;
 }
 
+.commitsOverlay{
+    top:0;
+    bottom:0;
+    left:0;
+    width:100%;
+    position:absolute;
+
+    background-color: black;
+    opacity: 0.8;
+}
+
 .homeTopTitle{
     /*position:relative;*/
     cursor: pointer; cursor: hand;
