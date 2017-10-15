@@ -26,13 +26,13 @@ class UserImpact extends Component {
         },
         xAxis: {
             title: {
-                text: 'number of commits'
+                text: 'users'
             },
             categories: xCategories
         },
         yAxis: {
             title: {
-                text: 'users'
+                text: 'number of commits'
             },
             labels: {
                 formatter: function () {
@@ -41,6 +41,7 @@ class UserImpact extends Component {
             }
         },
         series: [{
+            name: 'impact',
             data: yCategories
         }]
     });
