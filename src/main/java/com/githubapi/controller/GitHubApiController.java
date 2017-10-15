@@ -18,7 +18,7 @@ import java.util.concurrent.CompletableFuture;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-public class PrismicController {
+public class GitHubApiController {
 
     @Autowired
     private RepositoryService repositoryService;
